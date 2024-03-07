@@ -112,7 +112,7 @@ class Htmldom {
 		'option'=>array('option'=>1),
 	);
 
-	public function __construct($str=null, $lowercase=true, $forceTagsClosed=true, $target_charset=DEFAULT_TARGET_CHARSET, $stripRN=true, $defaultBRText=DEFAULT_BR_TEXT, $defaultSpanText=DEFAULT_SPAN_TEXT)
+	public function __construct($str=null, $lowercase=true, $forceTagsClosed=true, $target_charset=DEFAULT_TARGET_CHARSET, $stripRN=false, $defaultBRText=DEFAULT_BR_TEXT, $defaultSpanText=DEFAULT_SPAN_TEXT)
 	{
 		if ($str)
 		{
@@ -138,7 +138,7 @@ class Htmldom {
 	}
 
 	// load html from string
-	public function load($str, $lowercase=true, $stripRN=true, $defaultBRText=DEFAULT_BR_TEXT, $defaultSpanText=DEFAULT_SPAN_TEXT)
+	public function load($str, $lowercase=true, $stripRN=false, $defaultBRText=DEFAULT_BR_TEXT, $defaultSpanText=DEFAULT_SPAN_TEXT)
 	{
 		global $debug_object;
 
@@ -201,7 +201,7 @@ class Htmldom {
 	 * @param  [type]  $defaultSpanText  [description]
 	 * @return [type]                    [description]
 	 */
-	public function file_get_html($url, $use_include_path = false, $context = null, $offset = -1, $maxLen = -1, $lowercase = true, $forceTagsClosed = true, $target_charset = DEFAULT_TARGET_CHARSET, $stripRN = true, $defaultBRText = DEFAULT_BR_TEXT, $defaultSpanText = DEFAULT_SPAN_TEXT)
+	public function file_get_html($url, $use_include_path = false, $context = null, $offset = -1, $maxLen = -1, $lowercase = true, $forceTagsClosed = true, $target_charset = DEFAULT_TARGET_CHARSET, $stripRN = false, $defaultBRText = DEFAULT_BR_TEXT, $defaultSpanText = DEFAULT_SPAN_TEXT)
 	{
 
 		$contents = file_get_contents($url, $use_include_path, $context, $offset);
@@ -226,7 +226,7 @@ class Htmldom {
 	 * @param  [type]  $defaultSpanText [description]
 	 * @return [type]                   [description]
 	 */
-	public function str_get_html($str, $lowercase = true, $forceTagsClosed = true, $target_charset = DEFAULT_TARGET_CHARSET, $stripRN = true, $defaultBRText = DEFAULT_BR_TEXT, $defaultSpanText = DEFAULT_SPAN_TEXT)
+	public function str_get_html($str, $lowercase = true, $forceTagsClosed = true, $target_charset = DEFAULT_TARGET_CHARSET, $stripRN = false, $defaultBRText = DEFAULT_BR_TEXT, $defaultSpanText = DEFAULT_SPAN_TEXT)
 	{
 		if (empty($str) || strlen($str) > MAX_FILE_SIZE)
 		{
@@ -293,7 +293,7 @@ class Htmldom {
 	}
 
 	// prepare HTML data and init everything
-	protected function prepare($str, $lowercase=true, $stripRN=true, $defaultBRText=DEFAULT_BR_TEXT, $defaultSpanText=DEFAULT_SPAN_TEXT)
+	protected function prepare($str, $lowercase=true, $stripRN=false, $defaultBRText=DEFAULT_BR_TEXT, $defaultSpanText=DEFAULT_SPAN_TEXT)
 	{
 		$this->clear();
 
